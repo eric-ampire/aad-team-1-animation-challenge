@@ -18,10 +18,13 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        initComp();
+        initComponents();
     }
 
-    private void initComp(){
+    private void handleIntents(){
+
+    }
+    private void initComponents(){
         mUsername = findViewById(R.id.et_username);
         mPassword = findViewById(R.id.et_password);
         mSignin = findViewById(R.id.btn_signin);
@@ -45,4 +48,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private void mSignupButtonClicked(){
 
     }
+
+
 }
