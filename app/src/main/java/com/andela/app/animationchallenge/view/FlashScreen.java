@@ -19,12 +19,19 @@ public class FlashScreen extends AppCompatActivity {
 
     private int SPLASH_TIME = 4000; // 4 seconds
 
-    Animation animLogo, tranlateLogo;
-    ImageView logo, foto, share;
+    private Animation animLogo, tranlateLogo;
+    private  ImageView logo, foto, share;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //hiding the toolbar
+        try
+        {
+            this.getSupportActionBar().hide();
+        }
+        catch (NullPointerException e){}
         setContentView(R.layout.activity_flash_screen);
 
 
