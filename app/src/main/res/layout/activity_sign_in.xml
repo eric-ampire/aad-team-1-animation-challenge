@@ -22,6 +22,13 @@
            android:layout_width="wrap_content"
            android:layout_marginBottom="50dp"
            android:layout_height="wrap_content" />
+       <TextView
+           android:id="@+id/tv_welcome_message"
+           android:textAlignment="center"
+           android:layout_marginBottom="16dp"
+           android:textSize="16sp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"/>
 
        <EditText
            android:id="@+id/et_username"
