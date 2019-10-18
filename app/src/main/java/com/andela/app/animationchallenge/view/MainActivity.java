@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
+        //TODO : implementing Logout feature on this Activity UI
+        //using ----> mAuth.signOut();
         //TODO : implementing the MainActivity for user to see shared photos and app navigation......
     }
 

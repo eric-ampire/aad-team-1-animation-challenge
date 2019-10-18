@@ -5,15 +5,17 @@ import java.io.Serializable;
 public class User implements Serializable {
     private String id;
     private String displayName;
+    private String userName;
     private String userEmail;
     private String profileUrl;
 
     public User() {
     }
 
-    public User(String id, String displayName, String userEmail, String profileUrl) {
+    public User(String id, String displayName, String userName, String userEmail, String profileUrl) {
         this.id = id;
         this.displayName = displayName;
+        this.userName = userName;
         this.userEmail = userEmail;
         this.profileUrl = profileUrl;
     }
@@ -24,6 +26,14 @@ public class User implements Serializable {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getId() {
