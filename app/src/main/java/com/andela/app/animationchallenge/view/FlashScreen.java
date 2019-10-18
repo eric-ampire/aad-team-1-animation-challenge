@@ -60,9 +60,6 @@ public class FlashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 startActivity (new Intent(FlashScreen.this, MainActivity.class) );
-
-
-                //This 'finish()' is for exiting the app when back button pressed from Home page which is ActivityHome
                 finish();
 
             }
