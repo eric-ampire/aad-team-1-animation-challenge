@@ -223,7 +223,7 @@ public class SignUpActivity extends AppCompatActivity {
     //CreateUserObject creates a user record in the firebase real time database (users->userid->User)
     private void CreateUserObject(String name, Uri pickedImgUri, FirebaseUser user) {
         User new_user=new User();
-        new_user.setDisplayName(user.getDisplayName());
+        new_user.setUserName(userName.getText().toString());
         new_user.setId(user.getUid());
         new_user.setProfileUrl(user.getPhotoUrl().toString());
         new_user.setUserEmail(user.getEmail());
