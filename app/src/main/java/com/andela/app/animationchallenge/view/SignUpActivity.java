@@ -250,6 +250,7 @@ public class SignUpActivity extends AppCompatActivity {
     private void updateUI() {
         Intent mainActivity=new Intent(getApplicationContext(),MainActivity.class);
         startActivity(mainActivity);
+        overridePendingTransition(R.anim.fade_in, R.anim.rotate_scale_in);
         finish();
     }
     //showMessage displays a Toast to indicate an event

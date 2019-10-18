@@ -2,6 +2,7 @@
     <string name="app_name">Foto Share</string>
     <string name="save_menu">Save</string>
     <string name="delete_post">Delete Post</string>
-    <string name="upload_new_photo">Upload New Photo</string>
-    <string name="logout">Logout</string>
+    <string name="title">Title...</string>
+    <string name="comment_description">comment/description...</string>
+    <string name="post">Post</string>
 </resources>

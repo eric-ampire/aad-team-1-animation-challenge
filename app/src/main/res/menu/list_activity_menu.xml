@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/insert_menu"
-        android:title="@string/upload_new_photo"
+        android:title="Upload New Photo"
         app:showAsAction="never"/>
     <item android:id="@+id/logout_menu"
-        android:title="@string/logout"
+        android:title="Logout"
         app:showAsAction="never"/>
 </menu>
