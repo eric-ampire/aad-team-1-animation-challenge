@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.andela.app.animationchallenge">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -17,8 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.SignUpActivity" />
-        <activity android:name=".view.SignInActivity" />
+        <activity android:theme="@style/Theme.AppCompat.Light.NoActionBar" android:name=".view.SignUpActivity" />
+        <activity android:theme="@style/Theme.AppCompat.Light.NoActionBar" android:name=".view.SignInActivity" />
         <activity android:name=".view.MainActivity" />
     </application>
 
