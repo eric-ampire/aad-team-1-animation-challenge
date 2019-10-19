@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //Adding a Menu to the acitivity
+    //Adding a Menu to the activity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
