@@ -17,9 +17,8 @@
         android:title="@string/txt_friend" />
 
     <item
-        android:id="@+id/fragment_about"
+        android:id="@+id/aboutFragment"
         android:icon="@drawable/ic_about"
         android:title="@string/txt_about" />
-
 
 </menu>
