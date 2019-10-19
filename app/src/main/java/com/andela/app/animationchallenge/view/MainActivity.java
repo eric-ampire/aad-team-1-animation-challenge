@@ -6,19 +6,22 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 import com.andela.app.animationchallenge.R;
-import com.andela.app.animationchallenge.fragment.UserFragment;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private NavController navController;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +39,20 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
-        //TODO : implementing Logout feature on this Activity UI
-        //using ----> mAuth.signOut();
+        setupBottomNavigationView();
+    }
 
+    private void setupBottomNavigationView() {
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        bottomNavigationView = findViewById(R.id.bottom_nav_view);
 
-        //TODO : implementing the MainActivity for user to see shared photos and app navigation......
-
-
-
-
+        NavigationUI.setupWithNavController(bottomNavigationView, navController);
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            ActionBar supportActionBar = getSupportActionBar();
+            if (supportActionBar != null) {
+                supportActionBar.setTitle(destination.getLabel());
+            }
+        });
     }
 
 
