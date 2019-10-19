@@ -58,6 +58,7 @@ public class SignInActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent registerIntent=new Intent(getApplicationContext(),SignUpActivity.class);
                 startActivity(registerIntent);
+                overridePendingTransition(R.anim.fade_in, R.anim.rotate_scale_in);
                 finish();
             }
         });
@@ -96,6 +97,7 @@ public class SignInActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent loginIntent=new Intent(SignInActivity.this,SignUpActivity.class);
                 startActivity(loginIntent);
+                overridePendingTransition(R.anim.fade_in, R.anim.rotate_scale_in);
                 finish();
             }
         });
@@ -132,6 +134,7 @@ public class SignInActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser user) {
         Intent homeIntent=new Intent(getApplicationContext(),MainActivity.class);
         startActivity(homeIntent);
+        overridePendingTransition(R.anim.fade_in, R.anim.rotate_scale_in);
         finish();
     }
     //showMessage Displays a Toast
