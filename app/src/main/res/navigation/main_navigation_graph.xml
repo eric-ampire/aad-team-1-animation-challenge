@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.andela.app.animationchallenge.fragment.HomeFragment"
-        android:label="fragment_home"
+        android:label="@string/txt_home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_aboutFragment"
@@ -23,16 +23,16 @@
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.andela.app.animationchallenge.fragment.AboutFragment"
-        android:label="fragment_about"
+        android:label="@string/txt_about"
         tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/userFragment"
         android:name="com.andela.app.animationchallenge.fragment.UserFragment"
-        android:label="fragment_user"
+        android:label="@string/txt_friend"
         tools:layout="@layout/fragment_user" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.andela.app.animationchallenge.fragment.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="@string/txt_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
