@@ -60,7 +60,7 @@ public class FlashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 startActivity (new Intent(FlashScreen.this, MainActivity.class) );
-                overridePendingTransition(R.anim.fade_in, R.anim.rotate_scale_in);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 finish();
             }
         }, SPLASH_TIME);
