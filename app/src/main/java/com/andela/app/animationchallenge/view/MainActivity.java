@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
             ActionBar supportActionBar = getSupportActionBar();
+
             if (supportActionBar != null) {
                 supportActionBar.setTitle(destination.getLabel());
             }
