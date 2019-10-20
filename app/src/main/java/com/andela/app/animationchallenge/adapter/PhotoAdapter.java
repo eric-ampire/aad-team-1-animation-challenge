@@ -67,7 +67,7 @@ public class PhotoAdapter extends ListAdapter<Photo, PhotoAdapter.PhotoViewHolde
         }
     }
 
-    interface PhotoClickListener {
-        void onPhotoClick(Photo photo, View view)
+    public interface PhotoClickListener {
+        void onPhotoClick(Photo photo, View view);
     }
 }

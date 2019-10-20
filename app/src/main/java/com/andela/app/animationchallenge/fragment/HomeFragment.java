@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.andela.app.animationchallenge.R;
 import com.andela.app.animationchallenge.adapter.PhotoAdapter;
+import com.andela.app.animationchallenge.model.Photo;
 import com.andela.app.animationchallenge.util.LoadingStatus;
 import com.andela.app.animationchallenge.viewmodel.PhotoViewModel;
 
@@ -23,7 +25,7 @@ import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements PhotoAdapter.PhotoClickListener {
 
     private PhotoViewModel photoViewModel;
     private RecyclerView recyclerView;
@@ -85,7 +87,13 @@ public class HomeFragment extends Fragment {
         progressBar = view.findViewById(R.id.progressBarPhoto);
         recyclerView = view.findViewById(R.id.rvPhotos);
         noItemView = view.findViewById(R.id.no_photo);
-        photoAdapter = new PhotoAdapter();
+        photoAdapter = new PhotoAdapter(this);
         recyclerView.setAdapter(photoAdapter);
+    }
+
+    @Override
+    public void onPhotoClick(Photo photo, View view) {
+        // Todo: Show detail detail view
+        Toast.makeText(getContext(), photo.getTitle(), Toast.LENGTH_LONG).show();
     }
 }
