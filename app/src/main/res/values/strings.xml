@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">Animation Challenge</string>
+    <string name="app_name">Foto Share</string>
+    <string name="save_menu">Save</string>
+    <string name="delete_post">Delete Post</string>
+    <string name="title">Title…</string>
+    <string name="comment_description">comment/description…</string>
+    <string name="post">Post</string>
+    <string name="txt_home">Home</string>
+    <string name="txt_profile">Profile</string>
+    <string name="txt_friend">Friend</string>
+    <string name="txt_about">About</string>
+    <string name="txt_version">Version</string>
+    <string name="txt_last_update">Last Update</string>
+    <string name="txt_app_description">Foto share helps you to share your memories with your loved ones, quickly, easily and securely</string>
 </resources>
