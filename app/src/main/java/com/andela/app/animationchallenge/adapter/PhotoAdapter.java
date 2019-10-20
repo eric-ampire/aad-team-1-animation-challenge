@@ -18,8 +18,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PhotoAdapter extends ListAdapter<Photo, PhotoAdapter.PhotoViewHolder> {
 
-    public PhotoAdapter() {
+    private PhotoClickListener listener;
+    public PhotoAdapter(PhotoClickListener listener) {
         super(new PhotoDiff());
+        this.listener = listener;
     }
 
     @NonNull
@@ -35,6 +37,10 @@ public class PhotoAdapter extends ListAdapter<Photo, PhotoAdapter.PhotoViewHolde
     public void onBindViewHolder(@NonNull PhotoViewHolder holder, int position) {
         Photo currentPhoto = getItem(position);
         ImageUtils.loadImageFromUrl(holder.photo, currentPhoto.getUrl());
+
+        holder.itemView.setOnClickListener(v -> {
+            listener.onPhotoClick(currentPhoto, v);
+        });
     }
 
     class PhotoViewHolder extends RecyclerView.ViewHolder {
@@ -59,5 +65,9 @@ public class PhotoAdapter extends ListAdapter<Photo, PhotoAdapter.PhotoViewHolde
         public boolean areContentsTheSame(@NonNull Photo oldItem, @NonNull Photo newItem) {
             return oldItem.getId().equals(newItem.getId());
         }
+    }
+
+    interface PhotoClickListener {
+        void onPhotoClick(Photo photo, View view)
     }
 }
