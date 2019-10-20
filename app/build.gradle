@@ -49,6 +49,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.1.0'
     implementation 'me.zhanghai.android.materialprogressbar:library:1.4.2'
     implementation "com.github.bumptech.glide:glide:$version_glide"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 }
 
 apply plugin: 'com.google.gms.google-services'

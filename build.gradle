@@ -3,6 +3,7 @@
 buildscript {
     ext {
         version_glide = "4.9.0"
+        lifecycle_version = "2.1.0"
     }
 
     repositories {
