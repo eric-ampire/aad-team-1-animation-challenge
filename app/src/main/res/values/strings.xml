@@ -20,4 +20,10 @@
     <string name="username">Username</string>
     <string name="user_image">User Image</string>
     <string name="comment_timestamp">5 min ago</string>
+    <string name="description">Description</string>
+    <string name="picture_description">Input picture title here&#8230;</string>
+    <string name="description_to_image">Picture description here&#8230;</string>
+    <string name="upload_photo">Upload Photo</string>
+    <string name="picture_title">Picture Title</string>
+    <string name="image_upload">Image Upload</string>
 </resources>
