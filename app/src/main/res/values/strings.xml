@@ -17,4 +17,7 @@
     <string name="write_comment_here">Write comment here&#8230;</string>
     <string name="image_to_comment">Image to comment</string>
     <string name="button">Button</string>
+    <string name="username">Username</string>
+    <string name="user_image">User Image</string>
+    <string name="comment_timestamp">5 min ago</string>
 </resources>
