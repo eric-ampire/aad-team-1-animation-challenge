@@ -18,4 +18,6 @@
     <string name="occupation">Occupation: </string>
     <string name="followers">Followers: </string>
     <string name="album">Album</string>
+    <string name="txt_no_item">No photos here</string>
+    <string name="txt_no_item_body">Add one by clicking round botton below</string>
 </resources>
