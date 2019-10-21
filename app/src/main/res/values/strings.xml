@@ -12,4 +12,9 @@
     <string name="txt_version">Version</string>
     <string name="txt_last_update">Last Update</string>
     <string name="txt_app_description">Foto share helps you to share your memories with your loved ones, quickly, easily and securely</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="comment">Comment:</string>
+    <string name="write_comment_here">Write comment here&#8230;</string>
+    <string name="image_to_comment">Image to comment</string>
+    <string name="button">Button</string>
 </resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image_to_comment"
+            android:layout_width="0dp"
+            android:layout_height="202dp"
+            android:layout_margin="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/bg_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/image_to_comment" />
+
+        <TextView
+            android:id="@+id/comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/comment"
+            app:layout_constraintStart_toStartOf="@+id/image_to_comment"
+            app:layout_constraintTop_toBottomOf="@+id/image_to_comment" />
+
+        <EditText
+            android:id="@+id/comment_text"
+            android:layout_width="377dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/write_comment_here"
+            android:inputType="textMultiLine"
+            app:layout_constraintEnd_toEndOf="@+id/image_to_comment"
+            app:layout_constraintStart_toStartOf="@+id/image_to_comment"
+            app:layout_constraintTop_toBottomOf="@+id/comment"
+            android:importantForAutofill="no" />
+
+        <Button
+            android:id="@+id/post_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/deep_purple_900"
+            android:text="@string/post"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/image_to_comment"
+            app:layout_constraintTop_toBottomOf="@+id/comment_text" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
