@@ -26,4 +26,9 @@
     <string name="upload_photo">Upload Photo</string>
     <string name="picture_title">Picture Title</string>
     <string name="image_upload">Image Upload</string>
+    <string name="logout_confirm_txt">Are you sure you want to logout?</string>
+    <string name="logout_alert_yes">Yes</string>
+    <string name="logout_alert_no">Cancel</string>
+    <string name="txt_no_item">No photos here</string>
+    <string name="txt_no_item_body">Add one by clicking round botton below</string> 
 </resources>

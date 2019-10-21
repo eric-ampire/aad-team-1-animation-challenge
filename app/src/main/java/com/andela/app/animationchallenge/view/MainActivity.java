@@ -8,16 +8,18 @@ import android.view.MenuItem;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import com.andela.app.animationchallenge.R;
+import com.andela.app.animationchallenge.fragment.LogoutDialogFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LogoutDialogFragment.LogoutDialogListener {
 
     private FirebaseAuth mAuth;
     private NavController navController;
@@ -77,10 +79,30 @@ public class MainActivity extends AppCompatActivity {
 
                 return true;
             case R.id.logout_menu:
-                FirebaseAuth.getInstance().signOut();
-                finish();
+                promptDialog();
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void promptDialog() {
+        LogoutDialogFragment logoutDialogFragment=new LogoutDialogFragment();
+        logoutDialogFragment.show(getSupportFragmentManager(),"logout");
+    }
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        dialog.dismiss();
+        FirebaseAuth.getInstance().signOut();
+        Intent intent=new Intent(getApplicationContext(),SignInActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.translate_left,R.anim.fade_out);
+        finish();
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+        dialog.dismiss();
+
     }
 }
