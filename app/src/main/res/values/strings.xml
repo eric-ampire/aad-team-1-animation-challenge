@@ -12,4 +12,7 @@
     <string name="txt_version">Version</string>
     <string name="txt_last_update">Last Update</string>
     <string name="txt_app_description">Foto share helps you to share your memories with your loved ones, quickly, easily and securely</string>
+    <string name="logout_confirm_txt">Are you sure you want to logout?</string>
+    <string name="logout_alert_yes">Yes</string>
+    <string name="logout_alert_no">Cancel</string>
 </resources>
