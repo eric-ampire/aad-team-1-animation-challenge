@@ -18,6 +18,9 @@
     <string name="occupation">Occupation: </string>
     <string name="followers">Followers: </string>
     <string name="album">Album</string>
+    <string name="logout_confirm_txt">Are you sure you want to logout?</string>
+    <string name="logout_alert_yes">Yes</string>
+    <string name="logout_alert_no">Cancel</string>
     <string name="txt_no_item">No photos here</string>
-    <string name="txt_no_item_body">Add one by clicking round botton below</string>
+<string name="txt_no_item_body">Add one by clicking round button below</string>
 </resources>
