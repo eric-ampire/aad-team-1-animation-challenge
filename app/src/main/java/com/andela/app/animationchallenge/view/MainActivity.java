@@ -18,7 +18,10 @@ import com.andela.app.animationchallenge.fragment.LogoutDialogFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements LogoutDialogFragment.LogoutDialogListener {
 
@@ -43,7 +46,19 @@ public class MainActivity extends AppCompatActivity implements LogoutDialogFragm
         } else {
             // save the user to users of the db
             String userId = currentUser.getUid();
-            FirebaseDatabase.getInstance().getReference().child("users").child(userId).setValue(currentUser);
+            Map<String,Object> updates = new HashMap<>();
+            updates.put("name", currentUser.getDisplayName());
+            updates.put("email", currentUser.getEmail());
+            updates.put("phoneNumber", currentUser.getPhoneNumber());
+            updates.put("photoUrl", currentUser.getPhotoUrl());
+            updates.put("providerId", currentUser.getProviderId());
+            updates.put("emailVerified", currentUser.isEmailVerified());
+            updates.put("anonymous", currentUser.isAnonymous());
+            updates.put("uid", userId);
+            FirebaseFirestore.getInstance()
+                    .collection("users")
+                    .document(userId)
+                    .set(updates);
         }
 
         setupBottomNavigationView();

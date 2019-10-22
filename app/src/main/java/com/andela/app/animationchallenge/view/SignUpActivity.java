@@ -33,9 +33,13 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
     private static final int REQUESTCODE = 1;
@@ -166,9 +170,21 @@ public class SignUpActivity extends AppCompatActivity {
                             showMessage("Account created");
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null) {
-                                // save the user to the db
+                                // save the user to users of the db
                                 String userId = user.getUid();
-                                FirebaseDatabase.getInstance().getReference().child("users").child(userId).setValue(user);
+                                Map<String,Object> updates = new HashMap<>();
+                                updates.put("name", user.getDisplayName());
+                                updates.put("email", user.getEmail());
+                                updates.put("phoneNumber", user.getPhoneNumber());
+                                updates.put("photoUrl", user.getPhotoUrl());
+                                updates.put("providerId", user.getProviderId());
+                                updates.put("emailVerified", user.isEmailVerified());
+                                updates.put("anonymous", user.isAnonymous());
+                                updates.put("uid", userId);
+                                FirebaseFirestore.getInstance()
+                                        .collection("users")
+                                        .document(userId)
+                                        .set(updates);
                             }
                             //After creating a user we need to update the profile and name
                             updateUserInfo(name, pickedImgUri, user);
