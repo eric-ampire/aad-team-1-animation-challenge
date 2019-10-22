@@ -165,6 +165,11 @@ public class SignUpActivity extends AppCompatActivity {
                             Log.d(TAG, "createUserWithEmail:success");
                             showMessage("Account created");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            if (user != null) {
+                                // save the user to the db
+                                String userId = user.getUid();
+                                FirebaseDatabase.getInstance().getReference().child("users").child(userId).setValue(user);
+                            }
                             //After creating a user we need to update the profile and name
                             updateUserInfo(name, pickedImgUri, user);
                         } else {

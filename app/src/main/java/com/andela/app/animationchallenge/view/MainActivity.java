@@ -18,6 +18,7 @@ import com.andela.app.animationchallenge.fragment.LogoutDialogFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity implements LogoutDialogFragment.LogoutDialogListener {
 
@@ -39,6 +40,10 @@ public class MainActivity extends AppCompatActivity implements LogoutDialogFragm
             Intent SignInIntent=new Intent(MainActivity.this,SignInActivity.class);
             startActivity(SignInIntent);
             finish();
+        } else {
+            // save the user to users of the db
+            String userId = currentUser.getUid();
+            FirebaseDatabase.getInstance().getReference().child("users").child(userId).setValue(currentUser);
         }
 
         setupBottomNavigationView();
