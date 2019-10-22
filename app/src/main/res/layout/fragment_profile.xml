@@ -1,76 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.ProfileFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
 
-        <ImageView
-            android:id="@+id/profile_image"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/userphoto"
-            tools:srcCompat="@drawable/userphoto" />
 
-    <TextView
-        android:id="@+id/profile_name"
+    <ImageView
+        android:id="@+id/photo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/name"
-        android:textSize="20sp"
+        android:adjustViewBounds="true"
+        android:maxHeight="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/usrusr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/profile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="125dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/userphoto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/profile_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/username"
+        android:textAlignment="center"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile"/>
 
-        <TextView
-            android:id="@+id/profile_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/email"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp" />
 
-        <TextView
-            android:id="@+id/profile_occupation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/occupation"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp" />
+<Button
+    android:id="@+id/profile_follow"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="30dp"
+    android:text="@string/follow"
+    android:textAlignment="center"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    android:textColor="@android:color/white"
+    android:background="@android:color/holo_red_light"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/profile_username"/>
 
-        <TextView
-            android:id="@+id/profile_followers"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/followers"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp" />
 
-        <TextView
-            android:id="@+id/profile_album"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/album"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/holo_red_light"
-             android:gravity="center_horizontal" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/profile_followers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/followers"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/profile_following"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_follow" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/profile_following"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/following"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/profile_score"
+        app:layout_constraintStart_toEndOf="@+id/profile_followers"
+        app:layout_constraintTop_toBottomOf="@+id/profile_follow" />
+
+    <TextView
+        android:id="@+id/profile_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:text="@string/social_score"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_follow" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
