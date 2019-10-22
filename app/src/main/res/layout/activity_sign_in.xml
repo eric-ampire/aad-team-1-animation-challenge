@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/grdnt">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -24,50 +26,54 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/usrusr"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:src="@drawable/usrusr" />
 
                 <EditText
                     android:id="@+id/login_mail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="email"
-                    android:textColorHint="#000000"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
-                    android:letterSpacing="0.1"
-                    android:textSize="16dp"
+                    android:hint="email"
                     android:inputType="textEmailAddress"
+                    android:letterSpacing="0.1"
                     android:textColor="@color/fieldblack"
-                    />
+                    android:textColorHint="#000000"
+                    android:textSize="16dp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#4a5a71"></LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="16dp">
+
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/pswrd"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:src="@drawable/pswrd" />
+
                 <EditText
                     android:id="@+id/login_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="password"
-                    android:textColorHint="#000000"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
+                    android:hint="password"
                     android:inputType="textPassword"
                     android:letterSpacing="0.1"
-                    android:textSize="16dp"
-                    android:textColor="@color/fieldblack"/>
+                    android:textColor="@color/fieldblack"
+                    android:textColorHint="#000000"
+                    android:textSize="16dp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -75,18 +81,19 @@
         </LinearLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="60dp"
-        android:paddingRight="60dp"
-        android:orientation="vertical"
+        android:layout_marginBottom="20dp"
         android:gravity="bottom"
-        android:layout_marginBottom="20dp">
+        android:orientation="vertical"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp">
 
-        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_height="wrap_content"
+        <FrameLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
             android:padding="2dp">
 
@@ -95,21 +102,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#000000"
-                android:text="LogIn"
+                android:clickable="false"
                 android:gravity="center"
-                android:textColor="@android:color/white"
                 android:singleLine="true"
-                android:clickable="false">
-            </Button>
+                android:text="LogIn"
+                android:textColor="@android:color/white"></Button>
 
             <ProgressBar
-                android:layout_gravity="center"
                 android:id="@+id/login_progress"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_centerInParent="true"
-                android:visibility="visible"
-                />
+                android:layout_gravity="center"
+                android:visibility="visible" />
 
         </FrameLayout>
 
@@ -118,24 +123,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:letterSpacing="0.1"
             android:text="Create Account ? Signup"
-            android:textColor="#000000"
-            android:letterSpacing="0.1"/>
+            android:textColor="#000000" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_marginBottom="400dp">
+        android:layout_marginBottom="400dp"
+        android:gravity="center">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            app:civ_border_width="1dp"
-            app:civ_border_color="#FF000000"
             android:id="@+id/loginImgPhoto"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/userphoto"
-            />
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="1dp" />
     </LinearLayout>
 
 </RelativeLayout>
