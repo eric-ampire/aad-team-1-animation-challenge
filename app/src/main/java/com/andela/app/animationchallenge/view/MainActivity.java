@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements LogoutDialogFragm
             ActionBar supportActionBar = getSupportActionBar();
 
             if (supportActionBar != null) {
+
                 supportActionBar.setTitle(destination.getLabel());
             }
         });
