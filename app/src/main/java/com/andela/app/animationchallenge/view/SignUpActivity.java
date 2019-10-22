@@ -38,9 +38,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class SignUpActivity extends AppCompatActivity {
     private static final int REQUESTCODE = 1;
     private static final String TAG = "RegisterActivity";
@@ -169,23 +166,6 @@ public class SignUpActivity extends AppCompatActivity {
                             Log.d(TAG, "createUserWithEmail:success");
                             showMessage("Account created");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            if (user != null) {
-                                // save the user to users of the db
-                                String userId = user.getUid();
-                                Map<String,Object> updates = new HashMap<>();
-                                updates.put("name", user.getDisplayName());
-                                updates.put("email", user.getEmail());
-                                updates.put("phoneNumber", user.getPhoneNumber());
-                                updates.put("photoUrl", user.getPhotoUrl());
-                                updates.put("providerId", user.getProviderId());
-                                updates.put("emailVerified", user.isEmailVerified());
-                                updates.put("anonymous", user.isAnonymous());
-                                updates.put("uid", userId);
-                                FirebaseFirestore.getInstance()
-                                        .collection("users")
-                                        .document(userId)
-                                        .set(updates);
-                            }
                             //After creating a user we need to update the profile and name
                             updateUserInfo(name, pickedImgUri, user);
                         } else {
@@ -230,7 +210,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                                         if (task.isSuccessful()) {
                                             //user information updated ...
-                                            CreateUserObject(name, pickedImgUri, user);
+                                            saveUser(user);
                                             updateUI();
                                             showMessage("Registration Successfull");
                                         }
@@ -246,20 +226,28 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-    //CreateUserObject creates a user record in the firebase real time database (users->userid->User)
-    private void CreateUserObject(String name, Uri pickedImgUri, FirebaseUser user) {
-        User new_user = new User();
-        new_user.setUserName(userName.getText().toString());
-        new_user.setId(user.getUid());
-        new_user.setProfileUrl(user.getPhotoUrl().toString());
-        new_user.setUserEmail(user.getEmail());
+    // saveUser creates a user record in the firebase firestore (users->userid->User)
+    private void saveUser(FirebaseUser user) {
+        User newUser = new User();
 
-        myRef.child(user.getUid()).setValue(new_user)
+        String userId = user.getUid();
+        newUser.setDisplayName(user.getDisplayName());
+        newUser.setEmail(user.getEmail());
+        newUser.setPhoneNumber(user.getPhoneNumber());
+        newUser.setPhotoUrl(user.getPhotoUrl() != null ? user.getPhotoUrl().toString() : "");
+        newUser.setProviderId(user.getProviderId());
+        newUser.setEmailVerified(user.isEmailVerified());
+        newUser.setUid(userId);
+
+        FirebaseFirestore.getInstance()
+                .collection("users")
+                .document(userId)
+                .set(newUser)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         // Write was successful!
-                        // ...
+                        Log.d(TAG, "User saved to database");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -270,7 +258,6 @@ public class SignUpActivity extends AppCompatActivity {
                         Log.d(TAG, e.toString());
                     }
                 });
-
     }
 
     //updateUI opens the Mainactivity after successful registration
