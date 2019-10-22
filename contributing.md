@@ -44,7 +44,7 @@ Please follow these steps to have your contribution considered by the maintainer
 While the prerequisites above must be satisfied prior to having your pull request reviewed, the reviewer(s) may ask you to complete additional design work, tests, or other changes before your pull request can be ultimately accepted.
 
 ### Contributors 
-[Eric Ampire](https://github.com/eric-ampire)
-[Hansel Tita](https://github.com/HanselTita)
-[Brian Zhou](https://github.com/brianzhou139)
-[Skb-kind](https://github.com/Skb-kind)
+* [Eric Ampire](https://github.com/eric-ampire)
+* [Hansel Tita](https://github.com/HanselTita)
+* [Brian Zhou](https://github.com/brianzhou139)
+* [Skb-kind](https://github.com/Skb-kind)
