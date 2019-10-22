@@ -33,6 +33,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -209,7 +210,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                                         if (task.isSuccessful()) {
                                             //user information updated ...
-                                            CreateUserObject(name, pickedImgUri, user);
+                                            saveUser(user);
                                             updateUI();
                                             showMessage("Registration Successfull");
                                         }
@@ -225,20 +226,28 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-    //CreateUserObject creates a user record in the firebase real time database (users->userid->User)
-    private void CreateUserObject(String name, Uri pickedImgUri, FirebaseUser user) {
-        User new_user = new User();
-        new_user.setUserName(userName.getText().toString());
-        new_user.setId(user.getUid());
-        new_user.setProfileUrl(user.getPhotoUrl().toString());
-        new_user.setUserEmail(user.getEmail());
+    // saveUser creates a user record in the firebase firestore (users->userid->User)
+    private void saveUser(FirebaseUser user) {
+        User newUser = new User();
 
-        myRef.child(user.getUid()).setValue(new_user)
+        String userId = user.getUid();
+        newUser.setDisplayName(user.getDisplayName());
+        newUser.setEmail(user.getEmail());
+        newUser.setPhoneNumber(user.getPhoneNumber());
+        newUser.setPhotoUrl(user.getPhotoUrl() != null ? user.getPhotoUrl().toString() : "");
+        newUser.setProviderId(user.getProviderId());
+        newUser.setEmailVerified(user.isEmailVerified());
+        newUser.setUid(userId);
+
+        FirebaseFirestore.getInstance()
+                .collection("users")
+                .document(userId)
+                .set(newUser)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         // Write was successful!
-                        // ...
+                        Log.d(TAG, "User saved to database");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -249,7 +258,6 @@ public class SignUpActivity extends AppCompatActivity {
                         Log.d(TAG, e.toString());
                     }
                 });
-
     }
 
     //updateUI opens the Mainactivity after successful registration
