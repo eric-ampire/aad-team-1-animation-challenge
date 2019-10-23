@@ -158,28 +158,27 @@ public class SignUpActivity extends AppCompatActivity {
     //CreateUserAccount creates a user account using the Firebase method CreateUserAccountWithEmailAndPassword
     private void CreateUserAccount(String email, final String name, String password) {
         mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
-                            showMessage("Account created");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            //After creating a user we need to update the profile and name
-                            updateUserInfo(name, pickedImgUri, user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(SignUpActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            regBtn.setVisibility(View.VISIBLE);
-                            loadingProgress.setVisibility(View.INVISIBLE);
-                        }
-
-                        // ...
+            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "createUserWithEmail:success");
+                        showMessage("Account created");
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        //After creating a user we need to update the profile and name
+                        updateUserInfo(name, pickedImgUri, user);
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                        Toast.makeText(SignUpActivity.this, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
+                        regBtn.setVisibility(View.VISIBLE);
+                        loadingProgress.setVisibility(View.INVISIBLE);
                     }
-                });
+                }
+            });
+
     }
 
     //updateUserInfor updates the userPhoto in the firebase currentUser instance
@@ -188,42 +187,31 @@ public class SignUpActivity extends AppCompatActivity {
         StorageReference mStorage = FirebaseStorage.getInstance().getReference().child("users_photos");
         final StorageReference imageFilePath = mStorage.child(pickedImgUri.getLastPathSegment());
 
-        imageFilePath.putFile(pickedImgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+        imageFilePath.putFile(pickedImgUri).addOnSuccessListener(taskSnapshot -> {
 
-                //image uploaded successfully
-                //now we can get our image uri
-                imageFilePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        ///uri contain user image uri
-                        UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
-                                .setDisplayName(name)
-                                .setPhotoUri(uri)
-                                .build();
+            //image uploaded successfully
+            //now we can get our image uri
+            imageFilePath.getDownloadUrl().addOnSuccessListener(uri -> {
+                ///uri contain user image uri
+                UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
+                    .setDisplayName(name)
+                    .setPhotoUri(uri)
+                    .build();
 
-                        user.updateProfile(profileUpdate)
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
+                user.updateProfile(profileUpdate)
+                    .addOnCompleteListener(task -> {
 
-                                        if (task.isSuccessful()) {
-                                            //user information updated ...
-                                            saveUser(user);
-                                            updateUI();
-                                            showMessage("Registration Successfull");
-                                        }
+                        if (task.isSuccessful()) {
+                            //user information updated ...
+                            saveUser(user);
+                            updateUI();
+                            showMessage("Registration Successfull");
+                        }
 
-                                    }
-                                });
-                    }
-                });
+                    });
 
-            }
+            });
         });
-
-
     }
 
     // saveUser creates a user record in the firebase firestore (users->userid->User)
@@ -240,24 +228,19 @@ public class SignUpActivity extends AppCompatActivity {
         newUser.setUid(userId);
 
         FirebaseFirestore.getInstance()
-                .collection("users")
-                .document(userId)
-                .set(newUser)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        // Write was successful!
-                        Log.d(TAG, "User saved to database");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // Write failed
-                        // ...
-                        Log.d(TAG, e.toString());
-                    }
-                });
+            .collection("users")
+            .document(userId)
+            .set(newUser)
+            .addOnSuccessListener(aVoid -> {
+                // Write was successful!
+                Log.d(TAG, "User saved to database");
+            })
+            .addOnFailureListener(e -> {
+                // Write failed
+                // ...
+                Log.d(TAG, e.toString());
+            });
+
     }
 
     //updateUI opens the Mainactivity after successful registration
