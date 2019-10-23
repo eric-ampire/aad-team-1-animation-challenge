@@ -3,45 +3,27 @@ package com.andela.app.animationchallenge.model;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private String id;
     private String displayName;
-    private String userName;
-    private String userEmail;
-    private String profileUrl;
+    private String email;
+    private String phoneNumber;
+    private String photoUrl;
+    private String providerId;
+    private boolean emailVerified;
+    private String anonymous;
+    private String uid;
 
-    public User() {
-    }
+    public User() {}
 
-    public User(String id, String displayName, String userName, String userEmail, String profileUrl) {
-        this.id = id;
+
+    public User(String displayName, String email, String phoneNumber, String photoUrl, String providerId, boolean emailVerified, String anonymous, String uid) {
         this.displayName = displayName;
-        this.userName = userName;
-        this.userEmail = userEmail;
-        this.profileUrl = profileUrl;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.photoUrl = photoUrl;
+        this.providerId = providerId;
+        this.emailVerified = emailVerified;
+        this.anonymous = anonymous;
+        this.uid = uid;
     }
 
     public String getDisplayName() {
@@ -52,11 +34,59 @@ public class User implements Serializable {
         this.displayName = displayName;
     }
 
-    public String getProfileUrl() {
-        return profileUrl;
+    public String getEmail() {
+        return email;
     }
 
-    public void setProfileUrl(String profileUrl) {
-        this.profileUrl = profileUrl;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    public String getProviderId() {
+        return providerId;
+    }
+
+    public void setProviderId(String providerId) {
+        this.providerId = providerId;
+    }
+
+    public boolean getEmailVerified() {
+        return emailVerified;
+    }
+
+    public void setEmailVerified(boolean emailVerified) {
+        this.emailVerified = emailVerified;
+    }
+
+    public String getAnonymous() {
+        return anonymous;
+    }
+
+    public void setAnonymous(String anonymous) {
+        this.anonymous = anonymous;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

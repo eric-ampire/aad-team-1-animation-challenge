@@ -21,7 +21,7 @@
             app:mpb_useIntrinsicPadding="false"
             style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.andela.app.animationchallenge.view.GridRecyclerView
             android:layout_below="@id/progressBarPhoto"
             android:id="@+id/rvPhotos"
             android:layout_width="match_parent"
@@ -31,7 +31,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layoutAnimation="@anim/grid_layout_animation_from_bottom"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
