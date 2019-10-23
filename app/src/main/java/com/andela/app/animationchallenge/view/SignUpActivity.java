@@ -133,49 +133,40 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
         ImgUserPhoto = (ImageView) findViewById(R.id.signUpImgPhoto);
-        ImgUserPhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (Build.VERSION.SDK_INT >= 22) {
-                    checkAndRequestForPermission();
-                } else {
-                    openGallery();
-                }
-
+        ImgUserPhoto.setOnClickListener(view -> {
+            if (Build.VERSION.SDK_INT >= 22) {
+                checkAndRequestForPermission();
+            } else {
+                openGallery();
             }
+
         });//end of imageClick..
 
-        goToLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent loginIntent = new Intent(SignUpActivity.this, SignInActivity.class);
-                startActivity(loginIntent);
-                finish();
-            }
+        goToLogin.setOnClickListener(view -> {
+            Intent loginIntent = new Intent(SignUpActivity.this, SignInActivity.class);
+            startActivity(loginIntent);
+            finish();
         });
     }
 
     //CreateUserAccount creates a user account using the Firebase method CreateUserAccountWithEmailAndPassword
     private void CreateUserAccount(String email, final String name, String password) {
         mAuth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Log.d(TAG, "createUserWithEmail:success");
-                        showMessage("Account created");
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        //After creating a user we need to update the profile and name
-                        updateUserInfo(name, pickedImgUri, user);
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                        Toast.makeText(SignUpActivity.this, "Authentication failed.",
-                                Toast.LENGTH_SHORT).show();
-                        regBtn.setVisibility(View.VISIBLE);
-                        loadingProgress.setVisibility(View.INVISIBLE);
-                    }
+            .addOnCompleteListener(this, task -> {
+                if (task.isSuccessful()) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "createUserWithEmail:success");
+                    showMessage("Account created");
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    //After creating a user we need to update the profile and name
+                    updateUserInfo(name, pickedImgUri, user);
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                    Toast.makeText(SignUpActivity.this, "Authentication failed.",
+                            Toast.LENGTH_SHORT).show();
+                    regBtn.setVisibility(View.VISIBLE);
+                    loadingProgress.setVisibility(View.INVISIBLE);
                 }
             });
 
