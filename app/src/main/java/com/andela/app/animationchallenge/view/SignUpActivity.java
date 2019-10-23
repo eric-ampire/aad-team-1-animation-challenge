@@ -84,51 +84,48 @@ public class SignUpActivity extends AppCompatActivity {
         regBtn.setTypeface(custom_font);
         goToLogin.setTypeface(custom_font);
 
-        regBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final String name = userName.getText().toString();
-                final String email = userEmail.getText().toString();
-                final String password = userPassword.getText().toString();
-                final String password2 = userPassword2.getText().toString();
+        regBtn.setOnClickListener(view -> {
+            final String name = userName.getText().toString();
+            final String email = userEmail.getText().toString();
+            final String password = userPassword.getText().toString();
+            final String password2 = userPassword2.getText().toString();
 
-                if (email.isEmpty()) {
-                    userEmail.setError("field is required!");
-                    return;
-                }
+            if (email.isEmpty()) {
+                userEmail.setError("field is required!");
+                return;
+            }
 
-                if (name.isEmpty()) {
-                    userName.setError("field is required!");
-                    return;
-                }
+            if (name.isEmpty()) {
+                userName.setError("field is required!");
+                return;
+            }
 
-                if (password.isEmpty()) {
-                    userPassword.setError("field is required!");
-                    return;
-                }
+            if (password.isEmpty()) {
+                userPassword.setError("field is required!");
+                return;
+            }
 
-                if (password2.isEmpty()) {
-                    userPassword2.setError("field is required!");
-                    return;
-                }
+            if (password2.isEmpty()) {
+                userPassword2.setError("field is required!");
+                return;
+            }
 
-                if (email.isEmpty() || name.isEmpty() || password.isEmpty() || password2.isEmpty() || !password.equals(password2)) {
-                    //something wrong
-                    //we need to display an error
-                    showMessage("Please Verify Fields");
-                    regBtn.setVisibility(View.VISIBLE);
-                    loadingProgress.setVisibility(View.INVISIBLE);
+            if (email.isEmpty() || name.isEmpty() || password.isEmpty() || password2.isEmpty() || !password.equals(password2)) {
+                //something wrong
+                //we need to display an error
+                showMessage("Please Verify Fields");
+                regBtn.setVisibility(View.VISIBLE);
+                loadingProgress.setVisibility(View.INVISIBLE);
+            } else {
+                //everything is cool here ,all fields are fields and passwords the same
+                if (photoChosen) {
+                    regBtn.setVisibility(View.INVISIBLE);
+                    loadingProgress.setVisibility(View.VISIBLE);
+                    CreateUserAccount(email, name, password);
                 } else {
-                    //everything is cool here ,all fields are fields and passwords the same
-                    if (photoChosen) {
-                        regBtn.setVisibility(View.INVISIBLE);
-                        loadingProgress.setVisibility(View.VISIBLE);
-                        CreateUserAccount(email, name, password);
-                    } else {
-                        Toast.makeText(getApplicationContext(), "click image to select your profile", Toast.LENGTH_LONG).show();
-                    }
-
+                    Toast.makeText(getApplicationContext(), "click image to select your profile", Toast.LENGTH_LONG).show();
                 }
+
             }
         });
 
