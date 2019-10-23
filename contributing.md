@@ -48,3 +48,4 @@ While the prerequisites above must be satisfied prior to having your pull reques
 * [Hansel Tita](https://github.com/HanselTita)
 * [Brian Zhou](https://github.com/brianzhou139)
 * [Skb-kind](https://github.com/Skb-kind)
+* [Michael Joseph](https://github.com/tewshi)
